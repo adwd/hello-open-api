@@ -1,10 +1,11 @@
 'use client';
 
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 export const RootAuth = () => {
   const session = useSession();
-  console.log(session);
+  console.log('RootAuth', session);
 
   if (session.status === 'loading') return null;
 
@@ -12,5 +13,10 @@ export const RootAuth = () => {
     return <button onClick={() => signIn()}>Sign In</button>;
   }
 
-  return <p>authenticated</p>;
+  return (
+    <div>
+      <Link href={'/home'}>Home</Link>
+      <button onClick={() => signOut()}>Sign Out</button>
+    </div>
+  );
 };

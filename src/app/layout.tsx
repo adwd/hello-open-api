@@ -1,6 +1,4 @@
 import './globals.css';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { ClientSessionProvider } from '@/auth/session-provider';
 
 export const metadata = {
@@ -9,8 +7,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
-
   return (
     <html lang="en">
       <body>
